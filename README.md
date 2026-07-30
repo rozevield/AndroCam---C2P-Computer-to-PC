@@ -1,13 +1,13 @@
-# AndroCam Webcam
+# AndroCam - C2P Webcam
 
-Proyek pribadi: menjadikan kamera belakang HP Android sebagai webcam
-untuk PC lewat kabel USB, tanpa Gradle/Android Studio - hanya
-`javac` + Android SDK command-line tools + Python.
+A personal project: using an Android phone's rear camera as a PC webcam
+via USB cable, without Gradle or Android Studio—using only
+`javac`, Android SDK command-line tools, and Python.
 
-Dibuat untuk HP dengan Android 11 yang sering tidak didukung oleh
-aplikasi webcam pihak ketiga.
+Created for Android 11 phones, which are often unsupported by
+third-party webcam apps.
 
-## Struktur
+## Structure
 
 ```
 .
@@ -22,14 +22,15 @@ aplikasi webcam pihak ketiga.
 └── debug.keystore          Dibuat otomatis oleh build.bat saat pertama kali
 ```
 
-## Perilaku kamera (disengaja, bukan bug)
+## Camera behavior (intended, not a bug)
 
-- Notifikasi "AndroCam Webcam aktif" **selalu tampil** selama kamera
-  hidup - ini bawaan sistem Android untuk foreground service kamera
-  dan tidak dihilangkan.
-- Streaming **otomatis berhenti sementara saat layar HP dikunci**,
-  dan lanjut lagi begitu layar dibuka. Ini disengaja supaya kamera
-  tidak pernah aktif tanpa sepengetahuan pemilik HP.
+- Do not panic if you do not see any window or display on your phone screen when opening the app; it is designed to be UI-less, so the app immediately 
+  closing or showing a blank screen is perfectly normal behavior. To verify that it is working correctly, simply check your phone's notification bar; if an active notification reading "Menunggu koneksi PC..." appears, the app is successfully running in the background, with the phone camera automatically ready and streaming data to the PC—even when the screen is turned off or locked.
+- The "AndroCam Webcam active" notification **always appears** while the camera
+  is running; this is standard Android system behavior for foreground
+  camera services and cannot be removed.
+- Streaming is **still running even when the phone screen is locked**.
+  This ensures the camera still transmited even when the phone screen is locked.
 
 ## Setup
 
@@ -38,34 +39,35 @@ Download "cmdline-tools only", extract, lalu:
 ```
 sdkmanager "platform-tools" "platforms;android-30" "build-tools;35.0.0"
 ```
-Set `ANDROID_HOME` mengarah ke folder SDK-nya.
+Set `ANDROID_HOME` to point to the SDK folder.
 
 ### 2. JDK 17+
-Pastikan `javac` dan `keytool` ada di PATH.
+Ensure `javac` and `keytool` are in your PATH.
 
 ### 3. Python + OBS Studio
 ```
 pip install opencv-python pyvirtualcam numpy
 ```
-Install OBS Studio, buka sekali, klik **Start Virtual Camera** lalu
-**Stop Virtual Camera** (ini mendaftarkan driver ke Windows). OBS
-tidak perlu dibuka lagi setelah itu.
+Install OBS Studio, open it once, click **Start Virtual Camera**, then
+**Stop Virtual Camera** (this registers the driver with Windows). OBS
+does not need to be kept open after this. 
 
-### 4. HP
-Aktifkan **Developer options → USB debugging**, colok USB, izinkan
-popup debugging di HP.
+### 4. Phone
+Enable **Developer options → USB debugging**, connect the USB cable, and allow
+the debugging prompt on your phone.
 
-## Cara pakai
+## Usage
 
 ```
-build.bat        # sekali saja, atau saat source Java berubah
-install.bat       # tiap kali mau dipakai
+build.bat         # run once, or whenever the Java source changes
+install.bat       # run once, to ensure the application is installed on your mobile device
+run.bat           # run each time to start the client
 ```
 
-Setelah `install.bat` jalan, buka aplikasi "AndroCam Webcam" di HP,
-tap **MULAI WEBCAM**. Pilih **"OBS Virtual Camera"** sebagai kamera
-di aplikasi video call pilihanmu.
+After running `install.bat`, open the "C2P" app on your phone
+and tap **START WEBCAM**. Select **"OBS Virtual Camera"** as the camera
+in your preferred video calling application.
 
-## Lisensi
+## License
 
-Untuk penggunaan pribadi. Sesuaikan bebas untuk kebutuhan sendiri.
+For personal use. Feel free to customize it to suit your needs.
