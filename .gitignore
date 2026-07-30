@@ -1,0 +1,5 @@
+build_temp/
+*.apk
+debug.keystore
+__pycache__/
+*.pyc
