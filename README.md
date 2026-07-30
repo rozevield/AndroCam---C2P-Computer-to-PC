@@ -65,8 +65,7 @@ install.bat       # run once, to ensure the application is installed on your mob
 run.bat           # run each time to start the client
 ```
 
-After running `install.bat`, open the "C2P" app on your phone
-and tap **START WEBCAM**. Select **"OBS Virtual Camera"** as the camera
+After running `install.bat`, open the "C2P" app on your phone. Select **"OBS Virtual Camera"** as the camera
 in your preferred video calling application.
 
 ## License
