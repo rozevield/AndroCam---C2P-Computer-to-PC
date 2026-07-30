@@ -11,15 +11,16 @@ third-party webcam apps.
 
 ```
 .
-├── android/              Source Java + Manifest untuk aplikasi HP
+├── android/              Source Java + Manifest for the mobile application
 │   ├── AndroidManifest.xml
 │   ├── MainActivity.java
 │   ├── CameraService.java
 │   └── res/values/strings.xml
-├── build.bat              Compile APK (jalankan sekali, atau saat source berubah)
-├── install.bat             Install APK ke HP + jalankan client PC
-├── client_pc.py            Penerima frame di PC, menyuntik ke OBS Virtual Camera
-└── debug.keystore          Dibuat otomatis oleh build.bat saat pertama kali
+├── build.bat               Compile APK (run once, or when the source code gets updated)
+├── install.bat             Install APK onto your mobile device + run PC client
+├── run.bat                 Run the PC client receiver
+├── client_pc.py            Receiver frame in PC, injecting to OBS Virtual Camera
+└── debug.keystore          Automatically created once build.bat is run
 ```
 
 ## Camera behavior (intended, not a bug)
